@@ -17,5 +17,8 @@ headers = {
 res = requests.get(url=songURL, headers=headers)
 
 tmp=res.json()
-track_id=tmp['tracks']['items'][0]['id']
-print(track_id)
+if int(tmp['tracks']['total']) > 0:
+    track_id=tmp['tracks']['items'][0]['id']
+    print(track_id)
+else:
+    print("No matching result(s)")
